@@ -1,9 +1,15 @@
+import configureStore from "./store/configureStore";
+import "./App.css";
+import Main from "./pages/Main";
+import { Provider } from "react-redux";
 
-import './App.css';
+const store = configureStore();
 
 function App() {
   return (
-    <></>
+    <Provider store={store}>
+      <Main />
+    </Provider>
   );
 }
 

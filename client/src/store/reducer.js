@@ -1,6 +1,6 @@
-import {combineReducer} from 'redux'
+import {combineReducers} from 'redux'
 import storeReducer from "./store"
 
-export default combineReducer({
+export default combineReducers({
     store: storeReducer
 })

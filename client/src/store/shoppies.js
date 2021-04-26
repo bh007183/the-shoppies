@@ -15,7 +15,7 @@ const slice = createSlice({
 
 })
 
-export const {setVotes} = slice.action
+export const {setVotes} = slice.actions
 export default slice.reducer
 
 ///////API Actions///////

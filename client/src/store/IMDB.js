@@ -4,7 +4,6 @@ import {apiCallBegan} from "./apiActionCreators"
 const slice = createSlice({
     name: "IMDB",
     initialState: {
-        searchVal: "",
         results: []
     },
     reducers:{
@@ -16,13 +15,13 @@ const slice = createSlice({
 
 })
 
-export const {setMovie} = slice.action
+export const {setMovie} = slice.actions
 export default slice.reducer
 
 ///////API Actions///////
 
 export const apiSearchMovie = (searchInput) => apiCallBegan({
-    url: `https://www.omdbapi.com/?apikey=2a189c45&t=${searchInput}`,
+    url: `https://www.omdbapi.com/?apikey=2a189c45&s=${searchInput}`,
     method: "GET",
     onSuccess: setMovie.type
 })
