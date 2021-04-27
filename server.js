@@ -11,11 +11,11 @@ var PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const corsOptions ={
-  origin: "https://bjh-shopify-intern.herokuapp.com"
-}
+// const corsOptions ={
+//   origin: "https://bjh-shopify-intern.herokuapp.com"
+// }
 // corsOptions
-app.use(cors(corsOptions));
+app.use(cors());
 // Static directory
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -27,14 +27,12 @@ const routes = require("./routes/backendRoutes.js")
 
 app.use(routes)
 
-app.use(express.static("client/build"));
-
-
+// app.use(express.static("client/build"));
 // ...
 // Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 mongoose.connect(
   process.env.MONGODB_URI ||'mongodb://localhost/shoppies', {

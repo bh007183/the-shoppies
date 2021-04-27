@@ -8,6 +8,7 @@ import NominationCards from "../components/NominationCards";
 import { apiGetNominatedMovie } from "../store/shoppies";
 import { apiNominateMovie } from "../store/shoppies";
 import { apiDeleteNominatedMovie } from "../store/shoppies";
+import {Alerts} from "../components/Alert"
 
 export default function Main() {
   const dispatch = useDispatch();
