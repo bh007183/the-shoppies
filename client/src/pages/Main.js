@@ -15,9 +15,9 @@ export default function Main() {
   const results = useSelector((state) => state.store.IMDB.results.Search) || [
     -1,
   ];
-  const nominationResults = useSelector((state) => state.store.shoppies.Votes) || [
-    -1,
-  ];
+  const nominationResults = useSelector((state) => state.store.shoppies.Votes)
+  
+  
   const imdbIdArray = useSelector((state) => state.store.shoppies.imdbID) 
 
  
@@ -59,6 +59,7 @@ export default function Main() {
 
   return (
     <div>
+      
       <Grid container>
         <Grid direction="row" container>
         <Grid item md={4}></Grid>
@@ -82,10 +83,10 @@ export default function Main() {
         <Grid container direction="row">
           {/* Search Results Diplayed Here */}
           <Grid item xs={12} md={4}>
-          {/* <p className="YourNominations">Search Results</p> */}
+          <p className="YourNominations">Search Results</p>
             {results[0] !== -1 ? (
               results.map((movie, index) => (
-                imdbIdArray.indexOf(movie.imdbID) !== -1 ? 
+                imdbIdArray.indexOf(movie.imdbID) !== -1 || imdbIdArray.length >= 5 ? 
 
                 <Cards
                   data={index}
@@ -122,11 +123,12 @@ export default function Main() {
           <Grid item xs={12} md={4}>
             {/* Nominations Display here */}
             <p className="YourNominations">Your Nominations</p>
-          {nominationResults[0] !== [-1] ? 
+          {nominationResults.length ? 
               nominationResults.map((movie, index) => (
                 <NominationCards
                   data={movie._id}
                   key={index}
+                  index={index}
                   poster={
                     movie.Poster === "N/A"
                       ? "https://st3.depositphotos.com/1322515/35964/v/1600/depositphotos_359648638-stock-illustration-image-available-icon.jpg"
@@ -138,7 +140,7 @@ export default function Main() {
                 />
               ))
              : 
-              <p>No Nominations</p>
+              <p className="NoResults">No Nominations</p>
             }
 
 

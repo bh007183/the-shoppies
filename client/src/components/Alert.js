@@ -18,7 +18,7 @@ export default function Alerts() {
     <div className={classes.root}>
       <Alert id="Alert" severity="success">
         <AlertTitle>Success</AlertTitle>
-        This is a success alert — <strong>check it out!</strong>
+        You have voted for 5 films! — <strong>Way to go!</strong>
       </Alert>
     </div>
   );

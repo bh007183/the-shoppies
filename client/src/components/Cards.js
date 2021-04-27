@@ -51,7 +51,7 @@ export default function Cards(props) {
             <div className={classes.controls}>
               {props.selected === true ? (
                 <button style={{background: "#303030"}} disabled onClick={props.onVote} data={props.data}>
-                  Already Selected
+                  Selected
                 </button>
               ) : (
                 <button onClick={props.onVote} data={props.data}>
