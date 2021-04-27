@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import {Alert, AlertTitle} from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,14 +11,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-export default function Alert() {
+export default function Alerts() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Alert severity="success">This is a success alert — check it out!</Alert>
+      <Alert id="Alert" severity="success">
+        <AlertTitle>Success</AlertTitle>
+        This is a success alert — <strong>check it out!</strong>
+      </Alert>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import NominationCards from "../components/NominationCards";
 import { apiGetNominatedMovie } from "../store/shoppies";
 import { apiNominateMovie } from "../store/shoppies";
 import { apiDeleteNominatedMovie } from "../store/shoppies";
-import Alert from "../components/Alert"
+import Alerts from "../components/Alert"
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ export default function Main() {
         <Grid item md={4}></Grid>
           <Grid item xs={12} md={4}>
             {nominationResults.length >= 5 ? 
-            <Alert/> : 
+            <Alerts/> :  
             <form className="SearchBar">
               <input
                 
@@ -82,7 +82,7 @@ export default function Main() {
         <Grid container direction="row">
           {/* Search Results Diplayed Here */}
           <Grid item xs={12} md={4}>
-          <p className="YourNominations">Search Results</p>
+          {/* <p className="YourNominations">Search Results</p> */}
             {results[0] !== -1 ? (
               results.map((movie, index) => (
                 imdbIdArray.indexOf(movie.imdbID) !== -1 ? 
