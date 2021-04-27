@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+
 const store = configureStore();
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <Provider store={store}>
       
           <Toolbar className="toolBar">
-            <Typography className="header" variant="h6">Welcom to the Shoppies!!!!</Typography>
+            <Typography id="header" variant="h6">Welcome to the Shoppies!</Typography>
           </Toolbar>
       
       <Main />

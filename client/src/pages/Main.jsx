@@ -7,6 +7,7 @@ import Cards from "../components/Cards";
 import NominationCards from "../components/NominationCards";
 import { apiGetNominatedMovie } from "../store/shoppies";
 import { apiNominateMovie } from "../store/shoppies";
+import { apiDeleteNominatedMovie } from "../store/shoppies";
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function Main() {
   ];
   const imdbIdArray = useSelector((state) => state.store.shoppies.imdbID) 
 
-  console.log(results);
+ 
 
   const [imdb, setIMDB] = useState({
     input: "",
@@ -32,7 +33,7 @@ export default function Main() {
   useEffect(() => {
     dispatch(apiGetNominatedMovie())
     
-  }, []);
+  }, [dispatch]);
 
   const handleInput = (event) => {
     let name = event.target.name;
@@ -47,14 +48,23 @@ export default function Main() {
     let index = event.target.attributes.data.value;
     dispatch(apiNominateMovie(results[index]));
   };
+  const onRemove = async (event) => {
+    let _id = event.target.attributes.data.value;
+    await dispatch(apiDeleteNominatedMovie(_id));
+    await dispatch(apiGetNominatedMovie());
+    
+    
+  };
 
   return (
     <div>
       <Grid container>
         <Grid direction="row" container>
+        <Grid item xs={0} md={4}></Grid>
           <Grid item xs={12} md={4}>
             <form className="SearchBar">
               <input
+                
                 placeholder="Search By Title"
                 list="results"
                 onChange={handleInput}
@@ -63,7 +73,7 @@ export default function Main() {
               />
             </form>
           </Grid>
-          <Grid item xs={12} md={8}></Grid>
+          <Grid item xs={0} md={4}></Grid>
         </Grid>
         <Grid container direction="row">
           {/* Search Results Diplayed Here */}
@@ -100,17 +110,17 @@ export default function Main() {
                 /> 
               ))
             ) : (
-              <p>No Results</p>
+              <p className="NoResults">No Results</p>
             )}
           </Grid>
           <Grid item md={4}></Grid>
           <Grid item xs={12} md={4}>
             {/* Nominations Display here */}
-            <h5 className="YourNominations">Your Nominations</h5>
-          {nominationResults[0] !== -1 ? (
+            <p className="YourNominations">Your Nominations</p>
+          {nominationResults[0] !== [-1] ? 
               nominationResults.map((movie, index) => (
                 <NominationCards
-                  data={index}
+                  data={movie._id}
                   key={index}
                   poster={
                     movie.Poster === "N/A"
@@ -119,12 +129,12 @@ export default function Main() {
                   }
                   title={movie.Title}
                   year={movie.Year}
-                  onVote={onVote}
+                  onVote={onRemove}
                 />
               ))
-            ) : (
+             : 
               <p>No Nominations</p>
-            )}
+            }
 
 
 

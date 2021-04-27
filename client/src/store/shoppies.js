@@ -16,19 +16,20 @@ const slice = createSlice({
         },
         initialSetVotes: (Shoppies, action) => {
             Shoppies.Votes = action.payload 
+            let replaceArr = []
             for(let i = 0; i < action.payload.length; i++){
-                Shoppies.imdbID.push(action.payload[i].imdbID)
-                console.log(action.payload[i].imdbID)
-
-
+                replaceArr.push(action.payload[i].imdbID)
             }
+            Shoppies.imdbID = replaceArr
 
         }
+    
+
     }
 
 })
 
-export const {setVotes, initialSetVotes} = slice.actions
+export const {setVotes, initialSetVotes } = slice.actions
 export default slice.reducer
 
 ///////API Actions///////
@@ -43,4 +44,10 @@ export const apiGetNominatedMovie = () => apiCallBegan({
     url: `http://localhost:3001/api/get`,
     method: "GET",
     onSuccess: initialSetVotes.type
+})
+export const apiDeleteNominatedMovie = (_id) => apiCallBegan({
+    url: `http://localhost:3001/api/delete/${_id}`,
+    method: "Delete",
+    
+    
 })

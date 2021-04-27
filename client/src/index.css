@@ -1,20 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Cantarell:ital@1&display=swap" );
 
 *{
   color: white
 }
-
-
 .toolBar{
   background-color: rgb(149, 191, 71);
-  
-}
-.header{
-  font-family: 'Cantarell', sans-serif;
 }
 body {
   margin: 0;
-  font-family: ShopifySans, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(51, 44, 44);
