@@ -20,8 +20,9 @@ export default slice.reducer
 
 ///////API Actions///////
 
-export const apiSearchMovie = (data) => apiCallBegan({
-    url: `http://localhost:8080/api/add`,
+export const apiNominateMovie = (data) => apiCallBegan({
+    url: `http://localhost:3001/api/add`,
     method: "POST",
-    data
+    data,
+    onSuccess: setVotes.type
 })
