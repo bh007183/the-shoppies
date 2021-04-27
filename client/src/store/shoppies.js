@@ -10,12 +10,16 @@ const slice = createSlice({
         setVotes: (Shoppies, action) => {
             Shoppies.Votes.push(action.payload)
 
+        },
+        initialSetVotes: (Shoppies, action) => {
+            Shoppies.Votes = action.payload 
+
         }
     }
 
 })
 
-export const {setVotes} = slice.actions
+export const {setVotes, initialSetVotes} = slice.actions
 export default slice.reducer
 
 ///////API Actions///////
@@ -25,4 +29,9 @@ export const apiNominateMovie = (data) => apiCallBegan({
     method: "POST",
     data,
     onSuccess: setVotes.type
+})
+export const apiGetNominatedMovie = () => apiCallBegan({
+    url: `http://localhost:3001/api/get`,
+    method: "GET",
+    onSuccess: initialSetVotes.type
 })

@@ -5,3 +5,9 @@
 input{
     background: black;
 }
+.YourNominations{
+    text-align: center;
+}
+button{
+    background-color: grey;
+}

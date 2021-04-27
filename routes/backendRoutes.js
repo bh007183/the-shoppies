@@ -11,6 +11,7 @@ router.delete("/api/delete/:_id", async (req, res) => {
     res.json(data)
 })
 router.post("/api/add", async (req, res) => {
+    console.log(req.body)
     const data = await Votes.create(req.body).catch(err => res.json(err))
     res.json(data)
 })

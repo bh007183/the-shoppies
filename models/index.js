@@ -1,13 +1,13 @@
 const mongoose = require("mongoose")
 
 const VotesSchema = new mongoose.Schema({
-    image:{
+    Poster:{
         type: String,
     },
-    title: {
+    Title: {
         type: String
     },
-    year:{
+    Year:{
         type: Number
     }
 

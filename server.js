@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
-// const cors = require("cors");
+const cors = require("cors");
 
 // Sets up the Express App
 var PORT = process.env.PORT || 3001;
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // corsOptions
-// app.use(cors());
+app.use(cors());
 // Static directory
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
