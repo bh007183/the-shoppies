@@ -9,6 +9,9 @@ const VotesSchema = new mongoose.Schema({
     },
     Year:{
         type: Number
+    },
+    imdbID:{
+        type: String
     }
 
 })

@@ -16,6 +16,8 @@ export default function Main() {
   const nominationResults = useSelector((state) => state.store.shoppies.Votes) || [
     -1,
   ];
+  const imdbIdArray = useSelector((state) => state.store.shoppies.imdbID) 
+
   console.log(results);
 
   const [imdb, setIMDB] = useState({
@@ -24,8 +26,13 @@ export default function Main() {
 
   useEffect(() => {
     dispatch(apiSearchMovie(imdb.input));
-    dispatch(apiGetNominatedMovie());
+    
   }, [imdb.input, dispatch]);
+
+  useEffect(() => {
+    dispatch(apiGetNominatedMovie())
+    
+  }, []);
 
   const handleInput = (event) => {
     let name = event.target.name;
@@ -63,9 +70,12 @@ export default function Main() {
           <Grid item xs={12} md={4}>
             {results[0] !== -1 ? (
               results.map((movie, index) => (
+                imdbIdArray.indexOf(movie.imdbID) !== -1 ? 
+
                 <Cards
                   data={index}
                   key={index}
+                  selected={true}
                   poster={
                     movie.Poster === "N/A"
                       ? "https://st3.depositphotos.com/1322515/35964/v/1600/depositphotos_359648638-stock-illustration-image-available-icon.jpg"
@@ -74,7 +84,20 @@ export default function Main() {
                   title={movie.Title}
                   year={movie.Year}
                   onVote={onVote}
-                />
+                /> : 
+                <Cards
+                  data={index}
+                  key={index}
+                  selected={false}
+                  poster={
+                    movie.Poster === "N/A"
+                      ? "https://st3.depositphotos.com/1322515/35964/v/1600/depositphotos_359648638-stock-illustration-image-available-icon.jpg"
+                      : movie.Poster
+                  }
+                  title={movie.Title}
+                  year={movie.Year}
+                  onVote={onVote}
+                /> 
               ))
             ) : (
               <p>No Results</p>

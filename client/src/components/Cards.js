@@ -5,14 +5,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import "./style.css"
+import "./style.css";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     background: "black",
-    marginBottom: "2px"
-    
+    marginBottom: "2px",
   },
   details: {
     display: "flex",
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   },
   content: {
     flex: "1 0 auto",
-    padding: "2px"
+    padding: "2px",
   },
   cover: {
     height: 100,
@@ -32,11 +32,11 @@ const useStyles = makeStyles(() => ({
   alignText: {
     textAlign: "center",
   },
-
 }));
 
 export default function Cards(props) {
   const classes = useStyles();
+  const check = useSelector((state) => state.store.shoppies.Votes);
 
   return (
     <Card className={classes.root}>
@@ -44,25 +44,33 @@ export default function Cards(props) {
         <Grid item xs={9}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography  className={classes.alignText} component="h6" >
+              <Typography className={classes.alignText} component="h6">
                 {props.title}
               </Typography>
-              <Typography className={classes.alignText} >
+              <Typography className={classes.alignText}>
                 {props.year}
               </Typography>
             </CardContent>
             <div className={classes.controls}>
-              <button onClick={props.onVote} data={props.data} size="small" color="primary" variant="contained">
-                Nominate
-              </button>
+              {props.selected === true ? (
+                <button style={{background: "#303030"}} disabled onClick={props.onVote} data={props.data}>
+                  Already Selected
+                </button>
+              ) : (
+                <button onClick={props.onVote} data={props.data}>
+                  Nominate
+                </button>
+              )}
             </div>
           </div>
         </Grid>
         <Grid item xs={3}>
-        <img className={classes.cover} src={props.poster} alt={props.title + " album cover"}/>
-        
+          <img
+            className={classes.cover}
+            src={props.poster}
+            alt={props.title + " album cover"}
+          />
         </Grid>
-        
       </Grid>
     </Card>
   );

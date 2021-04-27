@@ -4,15 +4,24 @@ import {apiCallBegan} from "./apiActionCreators"
 const slice = createSlice({
     name: "Shoppies",
     initialState: {
-        Votes: []
+        Votes: [],
+        imdbID: []
     },
     reducers:{
         setVotes: (Shoppies, action) => {
-            Shoppies.Votes.push(action.payload)
+            Shoppies.Votes.push(action.payload);
+            Shoppies.imdbID.push(action.payload.imdbID)
+
 
         },
         initialSetVotes: (Shoppies, action) => {
             Shoppies.Votes = action.payload 
+            for(let i = 0; i < action.payload.length; i++){
+                Shoppies.imdbID.push(action.payload[i].imdbID)
+                console.log(action.payload[i].imdbID)
+
+
+            }
 
         }
     }
