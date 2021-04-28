@@ -35,18 +35,18 @@ export default slice.reducer
 ///////API Actions///////
 
 export const apiNominateMovie = (data) => apiCallBegan({
-    url: `http://localhost:3001/api/add`,
+    url: `https://bjh-shopify-intern.herokuapp.com/api/add`,
     method: "POST",
     data,
     onSuccess: setVotes.type
 })
 export const apiGetNominatedMovie = () => apiCallBegan({
-    url: `http://localhost:3001/api/get`,
+    url: `https://bjh-shopify-intern.herokuapp.com/api/get`,
     method: "GET",
     onSuccess: initialSetVotes.type
 })
 export const apiDeleteNominatedMovie = (_id) => apiCallBegan({
-    url: `http://localhost:3001/api/delete/${_id}`,
+    url: `https://bjh-shopify-intern.herokuapp.com/api/delete/${_id}`,
     method: "Delete",
     
     
