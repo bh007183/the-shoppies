@@ -17,7 +17,7 @@ function App() {
           <Toolbar className="toolBar">
             <Typography id="header" variant="h6">Welcome to the Shoppies!</Typography>
             <Hidden  mdUp>
-              <button styleonClick={()=> myVotes.current.scrollIntoView({behavior: 'smooth'})}>Your Votes</button>
+              <button onClick={()=> myVotes.current.scrollIntoView({behavior: 'smooth'})}>Your Votes</button>
             </Hidden>
           </Toolbar>
       <Main scroll={myVotes} />
