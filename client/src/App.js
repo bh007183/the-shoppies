@@ -8,27 +8,19 @@ import { Hidden } from '@material-ui/core';
 import React,{ useRef } from "react";
 
 
-const store = configureStore();
-
-
-
 function App() {
+  const store = configureStore();
+  let myVotes = useRef()
 
-
-  
- 
   return (
-    
     <Provider store={store}>
-      
           <Toolbar className="toolBar">
             <Typography id="header" variant="h6">Welcome to the Shoppies!</Typography>
             <Hidden  mdUp>
-              <button>Your Votes</button>
+              <button styleonClick={()=> myVotes.current.scrollIntoView({behavior: 'smooth'})}>Your Votes</button>
             </Hidden>
           </Toolbar>
-      
-      <Main />
+      <Main scroll={myVotes} />
     </Provider>
   );
 }

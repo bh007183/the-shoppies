@@ -9,8 +9,10 @@ import { apiGetNominatedMovie } from "../store/shoppies";
 import { apiNominateMovie } from "../store/shoppies";
 import { apiDeleteNominatedMovie } from "../store/shoppies";
 import Alerts from "../components/Alert"
+import Featured from "../components/Featured";
 
-export default function Main() {
+
+export default function Main(props) {
   const dispatch = useDispatch();
   const results = useSelector((state) => state.store.IMDB.results.Search) || [
     -1,
@@ -61,6 +63,7 @@ export default function Main() {
     <div>
       
       <Grid container>
+        <Featured/>
         <Grid direction="row" container>
         <Grid item md={4}></Grid>
           <Grid item xs={12} md={4}>
@@ -129,6 +132,7 @@ export default function Main() {
                   data={movie._id}
                   key={index}
                   index={index}
+                  scroll={props.scroll}
                   poster={
                     movie.Poster === "N/A"
                       ? "https://st3.depositphotos.com/1322515/35964/v/1600/depositphotos_359648638-stock-illustration-image-available-icon.jpg"

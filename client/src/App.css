@@ -9,7 +9,7 @@
 }
 .toolBar{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 .App-logo {
   height: 40vmin;
